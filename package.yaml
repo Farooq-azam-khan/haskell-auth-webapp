@@ -27,7 +27,7 @@ dependencies:
 - pcre-heavy 
 - aeson 
 - template-haskell 
-
+- mtl # for ExceptT 
 default-extensions: 
 - NoImplicitPrelude
 - OverloadedStrings

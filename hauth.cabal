@@ -39,6 +39,7 @@ library
       aeson
     , base >=4.7 && <5
     , classy-prelude
+    , mtl
     , pcre-heavy
     , template-haskell
     , time
@@ -48,6 +49,8 @@ library
 executable hauth-exe
   main-is: Main.hs
   other-modules:
+      Domain.Auth
+      Domain.Validation
       Paths_hauth
   hs-source-dirs:
       app
@@ -62,6 +65,7 @@ executable hauth-exe
     , base >=4.7 && <5
     , classy-prelude
     , hauth
+    , mtl
     , pcre-heavy
     , template-haskell
     , time
@@ -86,6 +90,7 @@ test-suite hauth-test
     , base >=4.7 && <5
     , classy-prelude
     , hauth
+    , mtl
     , pcre-heavy
     , template-haskell
     , time
