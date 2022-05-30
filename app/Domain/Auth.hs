@@ -52,8 +52,15 @@ mkPassword = validate Password
 
 -- These actions have sideeffects, hence, monad 
 type VerificationCode = Text 
+data EmailVerificationError = EmailVerificationErrorInvalidCode 
+        deriving (Show, Eq)
+
 class Monad m => AuthRepo m where 
         addAuth :: Auth -> m (Either RegistrationError VerificationCode) 
+        setEmailAsVerified :: VerificationCode -> m (Either EmailVerificationError ())
+
+verifyEmail :: AuthRepo m => VerificationCode -> m (Either EmailVerificationError ()) 
+verifyEmail = setEmailAsVerified  
 
 class Monad m => EmailVerificationNotif m where 
         notifyEmailVerification :: Email -> VerificationCode -> m () 
