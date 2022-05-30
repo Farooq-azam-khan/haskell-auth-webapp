@@ -28,11 +28,16 @@ dependencies:
 - aeson 
 - template-haskell 
 - mtl # for ExceptT 
+- data-has 
+- string-random 
+
 default-extensions: 
 - NoImplicitPrelude
 - OverloadedStrings
 - QuasiQuotes
 - TemplateHaskell 
+- ConstraintKinds
+- FlexibleContexts
 
 library:
   source-dirs: src

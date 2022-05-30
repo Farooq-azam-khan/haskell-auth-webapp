@@ -7,3 +7,6 @@
                 * external: interact with each other through the use of Port and Adapter
 * clear separation of domain logic and delivery mechanism is needed. Eg. web is a delivery mechanism, cli is a delivery mechanism, database, queues as well. 
         * if in the future you want to switch the different technologies (eg. mysql to postgres) you can write another adapter without touching any of the domain logic
+
+## In-Memory Database
+* Software Transactional Memory 

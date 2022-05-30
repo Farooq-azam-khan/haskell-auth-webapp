@@ -35,12 +35,16 @@ library
       OverloadedStrings
       QuasiQuotes
       TemplateHaskell
+      ConstraintKinds
+      FlexibleContexts
   build-depends:
       aeson
     , base >=4.7 && <5
     , classy-prelude
+    , data-has
     , mtl
     , pcre-heavy
+    , string-random
     , template-haskell
     , time
     , time-lens
@@ -49,6 +53,7 @@ library
 executable hauth-exe
   main-is: Main.hs
   other-modules:
+      Adapter.InMemory.Auth
       Domain.Auth
       Domain.Validation
       Paths_hauth
@@ -59,14 +64,18 @@ executable hauth-exe
       OverloadedStrings
       QuasiQuotes
       TemplateHaskell
+      ConstraintKinds
+      FlexibleContexts
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , base >=4.7 && <5
     , classy-prelude
+    , data-has
     , hauth
     , mtl
     , pcre-heavy
+    , string-random
     , template-haskell
     , time
     , time-lens
@@ -84,14 +93,18 @@ test-suite hauth-test
       OverloadedStrings
       QuasiQuotes
       TemplateHaskell
+      ConstraintKinds
+      FlexibleContexts
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , base >=4.7 && <5
     , classy-prelude
+    , data-has
     , hauth
     , mtl
     , pcre-heavy
+    , string-random
     , template-haskell
     , time
     , time-lens
