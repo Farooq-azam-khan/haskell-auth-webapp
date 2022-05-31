@@ -40,6 +40,7 @@ library
       TemplateHaskell
       ConstraintKinds
       FlexibleContexts
+      GeneralizedNewtypeDeriving
   build-depends:
       aeson
     , base >=4.7 && <5
@@ -66,6 +67,7 @@ executable hauth-exe
       TemplateHaskell
       ConstraintKinds
       FlexibleContexts
+      GeneralizedNewtypeDeriving
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
@@ -95,6 +97,7 @@ test-suite hauth-test
       TemplateHaskell
       ConstraintKinds
       FlexibleContexts
+      GeneralizedNewtypeDeriving
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
