@@ -25,6 +25,9 @@ source-repository head
 
 library
   exposed-modules:
+      Adapter.InMemory.Auth
+      Domain.Auth
+      Domain.Validation
       Lib
   other-modules:
       Paths_hauth
@@ -53,9 +56,6 @@ library
 executable hauth-exe
   main-is: Main.hs
   other-modules:
-      Adapter.InMemory.Auth
-      Domain.Auth
-      Domain.Validation
       Paths_hauth
   hs-source-dirs:
       app

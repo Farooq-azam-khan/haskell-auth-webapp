@@ -106,6 +106,7 @@ register auth = runExceptT $ do
 
 
 -- Temporary IO instance of AuthRepo and EmailVerification typeclass
+{-
 instance AuthRepo IO where 
         addAuth (Auth email pass) = do 
                 putStrLn $ "adding auth: " <> rawEmail email 
@@ -114,7 +115,7 @@ instance AuthRepo IO where
 instance EmailVerificationNotif IO where 
         notifyEmailVerification email vcode = 
                 putStrLn $ "Notify " <> rawEmail email <> " - " <> vcode 
-
+-}
 
 -- Login and Resolving Session 
 type UserId = Int 
