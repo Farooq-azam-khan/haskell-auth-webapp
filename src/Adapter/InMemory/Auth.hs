@@ -53,9 +53,9 @@ addAuth auth = do
                 lift $ writeTVar tvar newState
                 return vCode 
 
-setEmailVerified :: InMemory r m 
+setEmailAsVerified :: InMemory r m 
         => D.VerificationCode -> m (Either D.EmailVerificationError ())
-setEmailVerified vCode = do 
+setEmailAsVerified vCode = do 
         tvar <- asks getter 
         atomically . runExceptT $ do 
                 state <- lift $ readTVar tvar 
