@@ -30,6 +30,7 @@ dependencies:
 - mtl # for ExceptT 
 - data-has 
 - string-random
+- katip 
 
 default-extensions: 
 - NoImplicitPrelude
@@ -39,6 +40,7 @@ default-extensions:
 - ConstraintKinds
 - FlexibleContexts
 - GeneralizedNewtypeDeriving
+- TemplateHaskell 
 
 library:
   source-dirs: src
