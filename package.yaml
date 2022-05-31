@@ -29,7 +29,7 @@ dependencies:
 - template-haskell 
 - mtl # for ExceptT 
 - data-has 
-- string-random 
+- string-random
 
 default-extensions: 
 - NoImplicitPrelude

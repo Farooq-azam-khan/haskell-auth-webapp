@@ -119,7 +119,7 @@ newSession :: InMemory r m
         => D.UserId -> m D.SessionId 
 newSession uId = do 
         tvar <- asks getter 
-        sId <- liftIO $ ((tshow uId) <>) <$> stringRandomIO "[A-Za-z0-9{16}"
+        sId <- liftIO $ ((tshow uId) <>) <$> stringRandomIO "[A-Za-z0-9]{16}"
         atomically $ do 
                 state <- readTVar tvar 
                 let sessions = stateSessions state 
