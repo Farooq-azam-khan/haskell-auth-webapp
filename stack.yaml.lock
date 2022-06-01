@@ -11,6 +11,13 @@ packages:
       sha256: 186c759339e91c18b51879a5795f6cf8db2639001eb6b0e7c017d90e5dfa6ab2
   original:
     hackage: postgresql-simple-migration-0.1.15.0@sha256:123d8f62b0e300aede37e2d6dacc81b9468cb68dc5c3f52fe807085992280aa8,3969
+- completed:
+    hackage: hedis-0.15.0@sha256:b779ad63ff33bbb036c38e7eeb28ff1678fc22852027f5c1ea65a45ca03d5e5a,6291
+    pantry-tree:
+      size: 1776
+      sha256: db505ca57d6dd8597660ea86eb92cefcf9850b05e46eaed86aa904e9c4049138
+  original:
+    hackage: hedis-0.15.0
 snapshots:
 - completed:
     size: 618506

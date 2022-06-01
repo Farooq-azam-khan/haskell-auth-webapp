@@ -15,7 +15,7 @@
 ## Docker set up 
 * `docker run --name hauth-postgres -e POSTGRES_PASSWORD=postgres -d -p 5433:5432 postgres` 
 * Docker figure out ip address to connect to for the src/Lib.hs
-
+* `sudo docker run --name hauth-redis -d redis`
 ```bash
 docker inspect \
 	-f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
@@ -24,3 +24,12 @@ docker inspect \
 
 ### Execute `psql`
 - `docker exec -it hauth-postgres bash`
+- `psql -U postgres`
+- `\l`
+- `\c hauth`
+
+
+### Execute reids
+ - `sudo docker exec -it hauth-redis sh`
+
+ * Note: need to drop database for migration and testing otherwise it gets errors that extensions and tables exist
