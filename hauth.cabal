@@ -48,6 +48,7 @@ library
     , base >=4.7 && <5
     , classy-prelude
     , data-has
+    , exceptions
     , katip
     , mtl
     , pcre-heavy
@@ -81,6 +82,7 @@ executable hauth-exe
     , base >=4.7 && <5
     , classy-prelude
     , data-has
+    , exceptions
     , hauth
     , katip
     , mtl
@@ -116,6 +118,7 @@ test-suite hauth-test
     , base >=4.7 && <5
     , classy-prelude
     , data-has
+    , exceptions
     , hauth
     , katip
     , mtl

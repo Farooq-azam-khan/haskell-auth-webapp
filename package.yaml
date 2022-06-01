@@ -34,7 +34,7 @@ dependencies:
 - postgresql-simple 
 - postgresql-simple-migration
 - resource-pool 
-  
+- exceptions   
 default-extensions: 
 - NoImplicitPrelude
 - OverloadedStrings

@@ -8,9 +8,10 @@ import Data.Pool
 import Database.PostgreSQL.Simple.Migration
 import Database.PostgreSQL.Simple 
 import Data.Time 
+import qualified Control.Monad.Catch as CCM
 
 type State = Pool Connection 
-type PG r m = (Has State r, MonadReader r m, MonadIO m, MonadThrow m)
+type PG r m = (Has State r, MonadReader r m, MonadIO m, CCM.MonadThrow m)
 
 data Config = Config 
         { configUrl :: ByteString
@@ -35,11 +36,12 @@ addAuth (D.Auth email pass) = do
                 r <- stringRandomIO "[A-Za-z0-9]{16}"
                 return $ (tshow rawEmail) <> "_" <> r 
         result <- withConn $ \conn -> 
-                try $ query conn qry (rawEmail, rawPassw, vCode)
+                try $ query conn qry (rawEmail, rawPass, vCode)
         case result of 
                 Right [Only uId] -> return $ Right (uId, vCode)
                 Right _ -> throwString "Should not happen: PG doesn't return userId"
                 Left err@SqlError{sqlState = state, sqlErrorMsg = msg } -> 
+                        -- 23505 is a unique constraint violation
                         if state == "23505" && "auths_email_key" `isInfixOf` msg 
                                 then return $ Left D.RegistrationErrorEmailTaken 
                                 else throwString $ "Unhandled PG exception: " <> show err
@@ -48,6 +50,49 @@ addAuth (D.Auth email pass) = do
                         \(email, pass, email_verification_code, is_email_verified) \
                         \values (?, crypt(?, gen_salt('bf')), ?, 'f') returning id"
 
+setEmailAsVerified :: PG r m 
+                        => D.VerificationCode
+                        -> m (Either D.EmailVerificationError (D.UserId, D.Email))
+setEmailAsVerified vCode = do 
+        result <- withConn $ \conn -> query conn qry (Only vCode)
+        case result of 
+                -- query return 1 row 
+                [(uId, mail)] -> case D.mkEmail mail of 
+                                        Right email -> return $ Right (uId, email)
+                                        _ -> throwString $ "Should not happen: email in DB is not valid: " <> unpack mail 
+                -- query return o or 2+ rows 
+                _ -> return $ Left D.EmailVerificationErrorInvalidCode 
+
+
+        where
+                qry = "update auths set is_email_verified = 't' \
+                        \where email_verification_code = ? \
+                        \returning id, cast (email as text)"
+
+findUserByAuth :: PG r m 
+                        => D.Auth -> m (Maybe (D.UserId, Bool))
+findUserByAuth (D.Auth email pass) = do 
+        let rawEmail = D.rawEmail email 
+        let rawPass = D.rawPassword pass 
+        result <- withConn $ \conn -> query conn qry (rawEmail, rawPass)
+        return $ case result of 
+                [(uId, isVerified)] -> Just (uId, isVerified)
+                _ -> Nothing 
+        where 
+                qry = "select id, is_email_verified from auths where email = ? and pass = crypt(?, pass)"
+
+findEmailFromUserId :: PG r m 
+                        => D.UserId -> m (Maybe D.Email)
+findEmailFromUserId uId = do 
+        result <- withConn $ \conn -> query conn qry (Only uId)
+        case result of 
+                [Only mail] -> case D.mkEmail mail of 
+                                        Right email -> return $ Just email 
+                                        _ -> throwString $ "Should not happen: email in DB is not valid " <> unpack mail 
+                _ -> 
+                        return Nothing 
+        where 
+                qry = "select cast(email as text) from auths where id = ?"
 
 withPool :: Config -> (State -> IO a) -> IO a 
 withPool cfg action = 

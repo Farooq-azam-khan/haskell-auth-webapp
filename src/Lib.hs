@@ -7,8 +7,11 @@ import ClassyPrelude
 import qualified Adapter.InMemory.Auth as M
 import Domain.Auth
 import Control.Monad (MonadFail) 
+import qualified Adapter.PostgreSQL.Auth as PG
+import qualified Control.Monad.Catch as CCM
 
-type State = TVar M.State
+type State = (PG.State, TVar M.State)
+
 newtype App a = App
         { unApp :: ReaderT State (KatipContextT IO) a
         } deriving      (Applicative
@@ -19,6 +22,7 @@ newtype App a = App
                         , MonadFail
                         , KatipContext
                         , Katip 
+                        , CCM.MonadThrow
                         )
 
 run :: LogEnv -> State -> App a -> IO a
@@ -26,10 +30,10 @@ run le state =
         runKatipContextT le () mempty . flip runReaderT state . unApp
 
 instance AuthRepo App where
-        addAuth = M.addAuth
-        setEmailAsVerified = M.setEmailAsVerified
-        findUserByAuth = M.findUserByAuth
-        findEmailFromUserId = M.findEmailFromUserId
+        addAuth = PG.addAuth --M.addAuth
+        setEmailAsVerified = PG.setEmailAsVerified --M.setEmailAsVerified
+        findUserByAuth = PG.findUserByAuth--M.findUserByAuth
+        findEmailFromUserId = PG.findEmailFromUserId--M.findEmailFromUserId
 
 instance EmailVerificationNotif App where
         notifyEmailVerification = M.notifyEmailVerification
@@ -50,8 +54,15 @@ withKatip app =
 
 someFunc :: IO ()
 someFunc = withKatip $ \le -> do
-        state <- newTVarIO M.initialState
-        run le state action
+        mState <- newTVarIO M.initialState
+        PG.withState pgCfg $ \pgState -> run le (pgState, mState) action 
+        where 
+                pgCfg = PG.Config 
+                        { PG.configUrl = "postgresql://postgres:postgres@localhost:5432/hauth"
+                        , PG.configStripeCount = 2
+                        , PG.configMaxOpenConnPerStripe = 5
+                        , PG.configIdleConnTimeout = 10
+                        }
 
 action :: App ()
 action = do
