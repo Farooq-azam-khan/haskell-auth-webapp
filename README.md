@@ -10,3 +10,17 @@
 
 ## In-Memory Database
 * Software Transactional Memory 
+
+
+## Docker set up 
+* `docker run --name hauth-postgres -e POSTGRES_PASSWORD=postgres -d -p 5433:5432 postgres` 
+* Docker figure out ip address to connect to for the src/Lib.hs
+
+```bash
+docker inspect \
+	-f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
+	<container_name_or_id>
+```
+
+### Execute `psql`
+- `docker exec -it hauth-postgres bash`

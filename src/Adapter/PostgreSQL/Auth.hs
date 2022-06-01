@@ -46,7 +46,7 @@ addAuth (D.Auth email pass) = do
                                 then return $ Left D.RegistrationErrorEmailTaken 
                                 else throwString $ "Unhandled PG exception: " <> show err
         where 
-                qry = "insert into auth \
+                qry = "insert into auths \
                         \(email, pass, email_verification_code, is_email_verified) \
                         \values (?, crypt(?, gen_salt('bf')), ?, 'f') returning id"
 

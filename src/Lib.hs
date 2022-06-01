@@ -58,7 +58,7 @@ someFunc = withKatip $ \le -> do
         PG.withState pgCfg $ \pgState -> run le (pgState, mState) action 
         where 
                 pgCfg = PG.Config 
-                        { PG.configUrl = "postgresql://postgres:postgres@localhost:5432/hauth"
+                        { PG.configUrl = "postgresql://postgres:postgres@172.17.0.2:5432/hauth"
                         , PG.configStripeCount = 2
                         , PG.configMaxOpenConnPerStripe = 5
                         , PG.configIdleConnTimeout = 10
