@@ -27,6 +27,8 @@ library
   exposed-modules:
       Adapter.InMemory.Auth
       Adapter.PostgreSQL.Auth
+      Adapter.RabbitMQ.Auth
+      Adapter.RabbitMQ.Common
       Adapter.Redis.Auth
       Domain.Auth
       Domain.Validation
@@ -46,6 +48,7 @@ library
       TemplateHaskell
   build-depends:
       aeson
+    , amqp
     , base >=4.7 && <5
     , classy-prelude
     , data-has
@@ -81,6 +84,7 @@ executable hauth-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
+    , amqp
     , base >=4.7 && <5
     , classy-prelude
     , data-has
@@ -118,6 +122,7 @@ test-suite hauth-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
+    , amqp
     , base >=4.7 && <5
     , classy-prelude
     , data-has

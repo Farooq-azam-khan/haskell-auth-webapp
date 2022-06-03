@@ -36,6 +36,7 @@ dependencies:
 - resource-pool 
 - exceptions   
 - hedis 
+- amqp
 
 default-extensions: 
 - NoImplicitPrelude

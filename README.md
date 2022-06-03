@@ -33,3 +33,22 @@ docker inspect \
  - `sudo docker exec -it hauth-redis sh`
 
  * Note: need to drop database for migration and testing otherwise it gets errors that extensions and tables exist
+
+ ### Potential docker Compose 
+ - redis
+ - postgres
+ - haskell code 
+ - rabbitmq
+
+## Why RabbitMQ?
+- queueing system to run backgroun tasks 
+- why not multithread?
+        1. could hog memory: 
+        external queueing system acts as a buffer so that the taks are consuumed according to the capacity of the processors
+        2. task will survive application shut down 
+        3. distribute the tasks evenly across many nodes 
+- will use RabbitMQ for sending a verification email upon user registration 
+- is thread safe 
+
+### Execute RabbitMQ
+`docker run -d --hostname my-rabbit --name hauth-rabbitmq rabbitmq`
