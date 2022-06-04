@@ -68,7 +68,7 @@ withState action =
                                         let state = (pgState, redisState, mqState, mState)
                                         action le state 
         where 
-                mqCfg = "amqp://guest:guest@localhost:5672/%2F"
+                mqCfg = "amqp://guest:guest@172.17.0.4:5672/%2F"
                 redisCfg = "redis://172.17.0.3:6379/0"
                 pgCfg = PG.Config 
                         { PG.configUrl = "postgresql://postgres:postgres@172.17.0.2:5432/hauth"

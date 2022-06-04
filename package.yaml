@@ -48,8 +48,6 @@ default-extensions:
 - FlexibleContexts
 - GeneralizedNewtypeDeriving
 - TemplateHaskell 
-- DeriveAnyClass
-- DeriveGeneric
 
 library:
   source-dirs: src

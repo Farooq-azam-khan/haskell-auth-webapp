@@ -14,7 +14,7 @@ import Control.Monad.IO.Unlift (MonadUnliftIO)
 data EmailVerificationPayload = EmailVerificationPayload 
         { emailVerificationPayloadEmail :: Text 
         , emailVerificationPayloadVerificationCode :: Text 
-        } deriving (Generic, Show)
+        } deriving (Show)
 $(let structName = fromMaybe "" . lastMay . splitElem '.' . show $ ''EmailVerificationPayload 
       lowercaseFirst (x:xs) = toLower [x] <> xs
       lowercaseFirst xs = xs
