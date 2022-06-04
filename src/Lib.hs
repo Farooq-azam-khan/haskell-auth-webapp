@@ -1,5 +1,5 @@
 module Lib
-  ( someFunc
+  ( main  
   ) where
 
 import Katip 
@@ -13,6 +13,7 @@ import qualified Adapter.Redis.Auth as Redis
 import Control.Monad.IO.Unlift (MonadUnliftIO)
 import qualified Adapter.RabbitMQ.Common as MQ
 import qualified Adapter.RabbitMQ.Auth as MQAuth 
+import Text.StringRandom
 
 type State = (PG.State, Redis.State, MQ.State, TVar M.State)
 
@@ -62,8 +63,8 @@ withState action =
         withKatip $ \le -> do 
                 mState <- newTVarIO M.initialState
                 PG.withState pgCfg $ \pgState -> 
-                        Redis.withState regisCfg $ \redisState -> 
-                                MQ.withState mqCfg $ \mqState -> do 
+                        Redis.withState redisCfg $ \redisState -> 
+                                MQ.withState mqCfg 16 $ \mqState -> do 
                                         let state = (pgState, redisState, mqState, mState)
                                         action le state 
         where 
@@ -104,16 +105,16 @@ runKatip = withKatip $ \le ->
 
 logSomething :: (KatipContext m) => m () 
 logSomething = do 
-        $(logTM) (permitItem InfoS) "Log in no namespace"
+        $(logTM) (InfoS) "Log in no namespace"
         katipAddNamespace "ns1" $ 
-                $(logTM) (permitItem InfoS) "Log in ns1"
+                $(logTM) (InfoS) "Log in ns1"
         katipAddNamespace "ns2" $ do 
                 $(logTM) WarningS "Log in ns2"
                 katipAddNamespace "ns3" $ 
                         katipAddContext (sl "userId" $ asText "12") $ do 
-                                $(logTM) (permitItem InfoS) "Log in ns2.ns3 with userId context"
+                                $(logTM) (InfoS) "Log in ns2.ns3 with userId context"
                                 katipAddContext (sl "country" $ asText "Singapore") $
-                                        $(logTM) (permitItem InfoS) "Log in ns2.ns3 with userId and country context"
+                                        $(logTM) (InfoS) "Log in ns2.ns3 with userId and country context"
 
 main :: IO () 
 main = 

@@ -4,4 +4,4 @@ import Lib
 import ClassyPrelude
 
 main :: IO ()
-main = someFunc
+main = Lib.main 

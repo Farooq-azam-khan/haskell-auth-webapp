@@ -52,3 +52,34 @@ docker inspect \
 
 ### Execute RabbitMQ
 `docker run -d --hostname my-rabbit --name hauth-rabbitmq rabbitmq`
+
+## Libraries
+### aeson 
+- aeson is the most popular library for working with JSON 
+```Haskell
+data Value 
+        = Object Object
+        | Array Array 
+        | String Text 
+        | Number Scientific 
+        | Bool Bool
+        | Null
+type Object = HashMap Text Value 
+type Array = Vector Value 
+```
+- `Vector` is a data structure from `vector` library. It is an array structure 
+- `Scientific` is type from the `scientific` package. It represents an arbitrary-precision number 
+``JSON 
+{ "id": 123, "name": "Farooq", "hobbies": ["running", "programming"], "country": null}
+```
+- the above json becomes
+```Haskell
+import Data.Aeson 
+:{
+        object  ["id" .= 123
+                , "name" .= "Farooq"
+                , "hobbies" .= ["running", "programming"]
+                , "country" .= Null
+:}
+```
+
