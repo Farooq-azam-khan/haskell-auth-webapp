@@ -58,10 +58,12 @@ library
     , cookie
     , data-has
     , digestive-functors
+    , digestive-functors-aeson
     , exceptions
     , hedis
     , http-types
     , katip
+    , lens
     , mtl
     , pcre-heavy
     , postgresql-simple
@@ -102,11 +104,13 @@ executable hauth-exe
     , cookie
     , data-has
     , digestive-functors
+    , digestive-functors-aeson
     , exceptions
     , hauth
     , hedis
     , http-types
     , katip
+    , lens
     , mtl
     , pcre-heavy
     , postgresql-simple
@@ -148,11 +152,13 @@ test-suite hauth-test
     , cookie
     , data-has
     , digestive-functors
+    , digestive-functors-aeson
     , exceptions
     , hauth
     , hedis
     , http-types
     , katip
+    , lens
     , mtl
     , pcre-heavy
     , postgresql-simple

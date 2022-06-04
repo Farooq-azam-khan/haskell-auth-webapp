@@ -36,9 +36,24 @@ packages:
 # forks / in-progress versions pinned to a git hash. For example:
 #
 extra-deps:
+- Cabal-2.4.1.0@sha256:8aef21305c2324214944983e9dd118e65063b2e04f8c597db875298f602f6f12,21831
+- attoparsec-0.13.2.5@sha256:1b64fc08464d9dc73d80e13aea362410f3c8bca5abfa6831df8821281c3cdfeb,6199
+- call-stack-0.2.0@sha256:5ce796b78d5f964468ec6fe0717b4e7d0430817f37370c47b3e6b38e345b6643,1202
+- dlist-0.8.0.8@sha256:90ca348bffdc62d7070bcf0e97c728f8d01b24fbc7ea08d2909157d0da76534c,2066
+- ghc-prim-0.6.1@sha256:4707f24d1d435d00a0a771114cebe760348f60a653bc6b33dca4cff74ad107c6,2371
+- semigroups-0.18.5@sha256:41ef9f5f183f66c519c5cddcb3fbfdbc9b67a2b7bfae7d81f91de9ff7367d8c6,5828
+- template-haskell-2.16.0.0@sha256:71d8c2e92b712695cb4fd0be9cd1a41b05c25315e9748cfef1132bf4d02b6556,1917
+- th-abstraction-0.3.2.0@sha256:9b5b4e6e2bbff9b075ad7751ee98e2107090bd17b51d5442695b8990e4db6521,1851
+- aeson-1.4.7.1@sha256:6199a98b072e5a7748e81ab72476a0992cf23d925ebe4fefd5b917cbda9c2af8,7098
+- lens-4.17.1@sha256:cb35fc440fddf8129248df16affd4bc56c1712adf564e874869b5bf5dc733cc8,15831
+- lens-aeson-1.0.2@sha256:48a5f41b9565d14ab0f9c595ebcb6e52ce0fd4004ab4115f9e81636a1ddae5dd,2148
+
 - postgresql-simple-migration-0.1.15.0@sha256:123d8f62b0e300aede37e2d6dacc81b9468cb68dc5c3f52fe807085992280aa8,3969
 - hedis-0.15.0
 - digestive-functors-0.8.4.0
+- digestive-functors-aeson-1.1.27@sha256:a389cfeda1f5f376968b14afc631587abb93172e182b63422b8ddb3d8522c621,1584
+
+
   #- digestive-functors-aeson-1.1.27
  # - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git

@@ -23,6 +23,9 @@ dependencies:
 - base #>= 4.7 && < 5
 - classy-prelude 
 - time 
+- digestive-functors
+- digestive-functors-aeson 
+- lens
 - time-lens
 - pcre-heavy 
 - aeson 
@@ -44,10 +47,6 @@ dependencies:
 - wai 
 - wai-extra
 - blaze-builder
-- digestive-functors
-#- digestive-functors-aeson 
-
-
 
 
 default-extensions: 
