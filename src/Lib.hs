@@ -14,6 +14,7 @@ import Control.Monad.IO.Unlift (MonadUnliftIO)
 import qualified Adapter.RabbitMQ.Common as MQ
 import qualified Adapter.RabbitMQ.Auth as MQAuth 
 import Text.StringRandom
+import qualified Adapter.HTTP.Main as HTTP 
 
 type State = (PG.State, Redis.State, MQ.State, TVar M.State)
 
@@ -58,7 +59,7 @@ withKatip app =
                         stdoutScribe <- mkHandleScribe ColorIfTerminal stdout (permitItem InfoS) V2
                         registerScribe "stdout" stdoutScribe defaultScribeSettings logEnv 
 
-withState :: (LogEnv -> State -> IO ()) -> IO ()
+withState :: (Int -> LogEnv -> State -> IO ()) -> IO ()
 withState action = 
         withKatip $ \le -> do 
                 mState <- newTVarIO M.initialState
@@ -66,7 +67,7 @@ withState action =
                         Redis.withState redisCfg $ \redisState -> 
                                 MQ.withState mqCfg 16 $ \mqState -> do 
                                         let state = (pgState, redisState, mqState, mState)
-                                        action le state 
+                                        action port le state 
         where 
                 mqCfg = "amqp://guest:guest@172.17.0.4:5672/%2F"
                 redisCfg = "redis://172.17.0.3:6379/0"
@@ -76,6 +77,7 @@ withState action =
                         , PG.configMaxOpenConnPerStripe = 5
                         , PG.configIdleConnTimeout = 10
                         }
+                port = 3000
 
 action :: App ()
 action = do
@@ -118,7 +120,8 @@ logSomething = do
 
 main :: IO () 
 main = 
-        withState $ \le state@(_,_,mqState,_) -> do 
+        withState $ \port le state@(_,_,mqState,_) -> do 
                 let runner = run le state
                 MQAuth.init mqState runner 
-                runner action 
+                --runner action 
+                HTTP.main port runner 
