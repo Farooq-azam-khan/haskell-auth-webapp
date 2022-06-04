@@ -58,7 +58,6 @@ library
     , cookie
     , data-has
     , digestive-functors
-    , digestive-functors-aeson
     , exceptions
     , hedis
     , http-types
@@ -103,7 +102,6 @@ executable hauth-exe
     , cookie
     , data-has
     , digestive-functors
-    , digestive-functors-aeson
     , exceptions
     , hauth
     , hedis
@@ -150,7 +148,6 @@ test-suite hauth-test
     , cookie
     , data-has
     , digestive-functors
-    , digestive-functors-aeson
     , exceptions
     , hauth
     , hedis

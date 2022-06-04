@@ -1,7 +1,7 @@
 module Adapter.HTTP.Common where 
 
 import ClassyPrelude
-import Web.Scotty.Tran
+import Web.Scotty.Trans
 import qualified Text.Digestive.Form as DF
 import qualified Text.Digestive.Types as DF
 import Data.Aeson hiding (json)
@@ -10,9 +10,9 @@ import Blaze.ByteString.Builder (toLazyByteString)
 import Web.Cookie
 
 import Domain.Auth 
-import Data.Time.Lense 
+import Data.Time.Lens
 
-parseAndValidateJSOn :: (ScottyError e, MonadIO m, ToJSON v)
+parseAndValidateJSON :: (ScottyError e, MonadIO m, ToJSON v)
                         => DF.Form v m a -> ActionT e m a
 parseAndValidateJSON form = do 
         val <- jsonData `rescue` (\_ -> return Null)
@@ -29,7 +29,7 @@ toResult :: Either e a -> DF.Result e a
 toResult = either DF.Error DF.Success 
 
 setCookie :: (ScottyError e, Monad m) => SetCookie -> ActionT e m () 
-setcookie = 
+setCookie = 
         setHeader "Set-Cookie" . decodeUtf8 . toLazyByteString . renderSetCookie 
 
 getCookie :: (ScottyError e, Monad m) => Text -> ActionT e m (Maybe Text)

@@ -45,7 +45,7 @@ dependencies:
 - wai-extra
 - blaze-builder
 - digestive-functors
-- digestive-functors-aeson 
+#- digestive-functors-aeson 
 
 
 

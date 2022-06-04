@@ -25,17 +25,9 @@ packages:
       sha256: 825eb6308f9b5ec6f7527401f37369b3997eb3b012d3ce2a8fdd071067faf84e
   original:
     hackage: digestive-functors-0.8.4.0
-- completed:
-    hackage: digestive-functors-aeson-1.1.27@sha256:a389cfeda1f5f376968b14afc631587abb93172e182b63422b8ddb3d8522c621,1584
-    pantry-tree:
-      size: 346
-      sha256: 7a26dd5aad398f01bf3cb11ff887e9e1054eab1b2bd436b9494720f4be69baba
-  original:
-    hackage: digestive-functors-aeson-1.1.27
 snapshots:
 - completed:
-    size: 618506
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/8.yaml
-    sha256: f1c4aca9b9b81afbb9db55571acb0690cdc01ac97a178234de281f9dc075e95e
-  original:
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/8.yaml
+    size: 618509
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/10.yaml
+    sha256: 005f204647467d65c4ab549a5ca35d54b3d90a84a99a4ffc5d421a4018854fe2
+  original: lts-19.10
