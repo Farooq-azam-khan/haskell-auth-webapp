@@ -18,6 +18,20 @@ packages:
       sha256: db505ca57d6dd8597660ea86eb92cefcf9850b05e46eaed86aa904e9c4049138
   original:
     hackage: hedis-0.15.0
+- completed:
+    hackage: digestive-functors-0.8.4.2@sha256:badff1797b6dcd860a48ed4558985b2f6bec501e1016fa5afd9d7d6b0d8e4c08,3364
+    pantry-tree:
+      size: 1682
+      sha256: 53ce82c7f0c60c10009b1b764b537117a4ab402bbe1a147fba5ad2263acb3025
+  original:
+    hackage: digestive-functors-0.8.4.2
+- completed:
+    hackage: digestive-functors-aeson-1.1.22@sha256:81984a1917b3da11a39fae39241b867b4ca2b32b581585dec2d1d0de27ca7169,1584
+    pantry-tree:
+      size: 345
+      sha256: 1ac61ae71cd9a2cef542e94a9122b37efbcf95b639c0b1da74b5d911e685bbac
+  original:
+    hackage: digestive-functors-aeson-1.1.22
 snapshots:
 - completed:
     size: 618506

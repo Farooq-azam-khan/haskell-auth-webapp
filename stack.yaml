@@ -38,7 +38,9 @@ packages:
 extra-deps:
 - postgresql-simple-migration-0.1.15.0@sha256:123d8f62b0e300aede37e2d6dacc81b9468cb68dc5c3f52fe807085992280aa8,3969
 - hedis-0.15.0
-# - acme-missiles-0.3
+- digestive-functors-0.8.4.2
+- digestive-functors-aeson-1.1.22
+ # - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #

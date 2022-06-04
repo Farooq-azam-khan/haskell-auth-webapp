@@ -20,7 +20,7 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/hauth#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+- base #>= 4.7 && < 5
 - classy-prelude 
 - time 
 - time-lens
@@ -38,6 +38,17 @@ dependencies:
 - hedis 
 - amqp
 - unliftio-core
+- scotty 
+- http-types
+- cookie
+- wai 
+- wai-extra
+- blaze-builder
+- digestive-functors
+- digestive-functors-aeson 
+
+
+
 
 default-extensions: 
 - NoImplicitPrelude
