@@ -7,6 +7,7 @@ import Data.Aeson
 import Katip 
 import qualified Control.Monad.Catch as CMC
 import Control.Concurrent (forkIO)
+import Control.Monad.IO.Unlift (MonadUnliftIO)
 
 data State = State 
         { statePublisherChan :: Channel 
@@ -57,11 +58,11 @@ initQueue state@(State pubChan _) queueName exchangeName routingKey = do
 initConsumer :: State -> Text -> (Message -> IO Bool) -> IO ()
 initConsumer (State _ conChan) queueName handler = do 
         void . consumeMsgs conChan queueName Ack $ \(msg, env) -> void . forkIO $ do 
-                result <- handle msg 
+                result <- handler msg 
                 if result then ackEnv env else rejectEnv env False 
 
 
-consumeAndProcess :: (KatipContext m, FromJSON a, CMC.MonadCatch m)
+consumeAndProcess :: (MonadUnliftIO m, KatipContext m, FromJSON a, CMC.MonadCatch m)
                         => Message -> (a -> m Bool) -> m Bool 
 consumeAndProcess msg handler = 
         case eitherDecode' (msgBody msg) of 

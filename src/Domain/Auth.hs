@@ -97,7 +97,7 @@ verifyEmail :: (KatipContext m, AuthRepo m) => VerificationCode -> m (Either Ema
 verifyEmail vCode = runExceptT $ do 
         (uId, email) <- ExceptT $ setEmailAsVerified vCode
         withUserIdContext uId $ 
-                $(logTM) InfoS $ ls (rawEmail email) <> " is verified successfully"
+                $(logTM) (InfoS) $ ls (rawEmail email) <> " is verified successfully"
         return () 
 
 class Monad m => EmailVerificationNotif m where 
@@ -114,7 +114,7 @@ register auth = runExceptT $ do
         let email = authEmail auth 
         lift $ notifyEmailVerification email vCode 
         withUserIdContext uId $ 
-                $(logTM) InfoS $ ls (rawEmail email) <> " is registered successfully" 
+                $(logTM) (InfoS) $ ls (rawEmail email) <> " is registered successfully" 
 
 
 -- Temporary IO instance of AuthRepo and EmailVerification typeclass
@@ -149,7 +149,7 @@ login auth = runExceptT $ do
                 Just (_, False) -> throwError LoginErrorEmailNotVerified
                 Just (uId, _) -> withUserIdContext uId . lift $ do 
                         sId <- newSession uId 
-                        $(logTM) InfoS $ ls (rawEmail $ authEmail auth) <> " logged in successfully"
+                        $(logTM) (InfoS) $ ls (rawEmail $ authEmail auth) <> " logged in successfully"
                         return sId 
 
 resolveSessionId :: SessionRepo m => SessionId -> m (Maybe UserId)

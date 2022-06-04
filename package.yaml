@@ -37,6 +37,7 @@ dependencies:
 - exceptions   
 - hedis 
 - amqp
+- unliftio-core
 
 default-extensions: 
 - NoImplicitPrelude
@@ -47,6 +48,8 @@ default-extensions:
 - FlexibleContexts
 - GeneralizedNewtypeDeriving
 - TemplateHaskell 
+- DeriveAnyClass
+- DeriveGeneric
 
 library:
   source-dirs: src
