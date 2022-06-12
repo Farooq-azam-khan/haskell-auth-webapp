@@ -12,7 +12,7 @@ extra-source-files:
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
-# category:            Web
+category:            Web
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
@@ -22,41 +22,40 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base #>= 4.7 && < 5
 - classy-prelude 
-- time 
-- digestive-functors
-- digestive-functors-aeson 
-- lens
-- time-lens
 - pcre-heavy 
+- time-lens
+- time 
 - aeson 
-- template-haskell 
 - mtl # for ExceptT 
-- data-has 
 - string-random
+- data-has 
 - katip 
 - postgresql-simple 
 - postgresql-simple-migration
 - resource-pool 
-- exceptions   
-- hedis 
-- amqp
-- unliftio-core
-- scotty 
+- hedis # redis  
+- amqp # rabbit mq
 - http-types
+- scotty 
 - cookie
 - wai 
 - wai-extra
 - blaze-builder
+- digestive-functors
+- digestive-functors-aeson 
+- lens
+  #- template-haskell 
+  #- exceptions   
+  #- unliftio-core
 
 
 default-extensions: 
 - NoImplicitPrelude
 - OverloadedStrings
 - QuasiQuotes
-- TemplateHaskell 
+- GeneralizedNewtypeDeriving
 - ConstraintKinds
 - FlexibleContexts
-- GeneralizedNewtypeDeriving
 - TemplateHaskell 
 
 library:
