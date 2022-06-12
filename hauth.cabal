@@ -7,6 +7,7 @@ cabal-version: 1.12
 name:           hauth
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/hauth#readme>
+category:       Web
 homepage:       https://github.com/githubuser/hauth#readme
 bug-reports:    https://github.com/githubuser/hauth/issues
 author:         Author name here
@@ -44,10 +45,9 @@ library
       NoImplicitPrelude
       OverloadedStrings
       QuasiQuotes
-      TemplateHaskell
+      GeneralizedNewtypeDeriving
       ConstraintKinds
       FlexibleContexts
-      GeneralizedNewtypeDeriving
       TemplateHaskell
   build-depends:
       aeson
@@ -71,9 +71,9 @@ library
     , resource-pool
     , scotty
     , string-random
-    , template-haskell
     , time
     , time-lens
+    , unliftio
     , unliftio-core
     , wai
     , wai-extra
@@ -89,10 +89,9 @@ executable hauth-exe
       NoImplicitPrelude
       OverloadedStrings
       QuasiQuotes
-      TemplateHaskell
+      GeneralizedNewtypeDeriving
       ConstraintKinds
       FlexibleContexts
-      GeneralizedNewtypeDeriving
       TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
@@ -118,9 +117,9 @@ executable hauth-exe
     , resource-pool
     , scotty
     , string-random
-    , template-haskell
     , time
     , time-lens
+    , unliftio
     , unliftio-core
     , wai
     , wai-extra
@@ -137,10 +136,9 @@ test-suite hauth-test
       NoImplicitPrelude
       OverloadedStrings
       QuasiQuotes
-      TemplateHaskell
+      GeneralizedNewtypeDeriving
       ConstraintKinds
       FlexibleContexts
-      GeneralizedNewtypeDeriving
       TemplateHaskell
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
@@ -166,9 +164,9 @@ test-suite hauth-test
     , resource-pool
     , scotty
     , string-random
-    , template-haskell
     , time
     , time-lens
+    , unliftio
     , unliftio-core
     , wai
     , wai-extra

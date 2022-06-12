@@ -14,7 +14,7 @@ import Katip
 authForm :: (Monad m) => DF.Form [Text] m Auth 
 authForm = 
         Auth    <$> "email" .: emailForm
-                <*> "password" :. passwordForm 
+                <*> "password" .: passwordForm 
         where 
                 emailForm = DF.validate (toResult. mkEmail) (DF.text Nothing)
                 passwordForm = DF.validate (toResult . mkPassword) (DF.text Nothing)
@@ -22,7 +22,7 @@ authForm =
 verifyEmailForm :: (Monad m) => DF.Form [Text] m VerificationCode
 verifyEmailForm = DF.text Nothing
 
-routes :: (ScottyError e, MonadIO m, KatipContext m, AuthRepo m, EmailVerificationNotif m, SessionRepo m) => Scotty e m () 
+routes :: (ScottyError e, MonadIO m, KatipContext m, AuthRepo m, EmailVerificationNotif m, SessionRepo m) => ScottyT e m () 
 routes = do 
         -- register
         post "/api/auth/register" $ do 
@@ -43,7 +43,7 @@ routes = do
                                 status status400
                                 json ("InvalidCode" :: Text)
                         Right _ -> 
-                                reutrn () 
+                                return () 
 
         -- login 
         post "/api/auth/login" $ do 

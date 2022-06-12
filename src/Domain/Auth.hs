@@ -33,7 +33,7 @@ import ClassyPrelude
 import Domain.Validation 
 import Text.Regex.PCRE.Heavy 
 import Control.Monad.Except 
-import Control.Monad ( MonadFail )
+
 data Auth = Auth 
         { authEmail :: Email
         , authPassword :: Password 

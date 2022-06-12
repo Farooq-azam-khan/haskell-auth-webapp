@@ -6,11 +6,13 @@ import Katip
 import ClassyPrelude
 import qualified Adapter.InMemory.Auth as M
 import Domain.Auth
-import Control.Monad (MonadFail) 
+import Control.Monad 
+import Control.Monad.Fail (MonadFail) 
 import qualified Adapter.PostgreSQL.Auth as PG
 import qualified Control.Monad.Catch as CCM
 import qualified Adapter.Redis.Auth as Redis 
-import Control.Monad.IO.Unlift (MonadUnliftIO)
+--import Control.Monad.IO.Unlift --(MonadUnliftIO)
+import UnliftIO hiding (bracket, newTVarIO)
 import qualified Adapter.RabbitMQ.Common as MQ
 import qualified Adapter.RabbitMQ.Auth as MQAuth 
 import Text.StringRandom
@@ -52,11 +54,11 @@ instance SessionRepo App where
 
 withKatip :: (LogEnv -> IO a) -> IO a 
 withKatip app = 
-        bracket createLogEnv closeScribes app 
+        bracket createLogEnv closeScribes
         where 
                 createLogEnv = do 
-                        logEnv <- initLogEnv "HAuth" "dev"
-                        stdoutScribe <- mkHandleScribe ColorIfTerminal stdout (permitItem InfoS) V2
+                        logEnv <- initLogEnv "HAuth" "prod"
+                        stdoutScribe <- mkHandleScribe ColorIfTerminal stdout InfoS V2
                         registerScribe "stdout" stdoutScribe defaultScribeSettings logEnv 
 
 withState :: (Int -> LogEnv -> State -> IO ()) -> IO ()

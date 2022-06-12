@@ -4,6 +4,7 @@ import ClassyPrelude
 import Web.Scotty.Trans
 import qualified Text.Digestive.Form as DF
 import qualified Text.Digestive.Types as DF
+import qualified Text.Digestive.Aeson as DF
 import Data.Aeson hiding (json)
 import Network.HTTP.Types.Status
 import Blaze.ByteString.Builder (toLazyByteString)
@@ -18,7 +19,7 @@ parseAndValidateJSON form = do
         val <- jsonData `rescue` (\_ -> return Null)
         validationResult <- lift $ DF.digestJSON form val 
         case validationResult of 
-                (v, Nothing) -> 
+                (v, Nothing) -> do
                         status status400
                         json $ DF.jsonErrors v 
                         finish
@@ -36,7 +37,7 @@ getCookie :: (ScottyError e, Monad m) => Text -> ActionT e m (Maybe Text)
 getCookie key = do 
         mCookieStr <- header "Cookie"
         return $ do 
-                cookie <- parseCookies . encodeUtf8 . toString <$> mCookieStr 
+                cookie <- parseCookies . encodeUtf8 . toStrict <$> mCookieStr 
                 let bsKey = encodeUtf8 key 
                 val <- lookup bsKey cookie
                 return $ decodeUtf8 val 

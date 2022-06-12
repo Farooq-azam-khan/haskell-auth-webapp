@@ -45,9 +45,9 @@ dependencies:
 - digestive-functors-aeson 
 - lens
   #- template-haskell 
-  #- exceptions   
-  #- unliftio-core
-
+- exceptions   
+- unliftio-core
+- unliftio
 
 default-extensions: 
 - NoImplicitPrelude
