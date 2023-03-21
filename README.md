@@ -1,4 +1,17 @@
 # hauth
+* Practical Web Development with Haskell - Mastering the Essential Skills to Build Fast and Scalable Web Applications by Ecky Putrady 
+
+## Tools 
+* [stack](https://docs.haskellstack.org/en/stable/) - cli that does the following 
+	* project scaffolding 
+	* downloading dependencies 
+	* run tests 
+	* build applications 
+	* etc. 
+* cabal 
+* hpack 
+
+## Web App Architecture 
 
 * Port and Adapter Architecture - by Alistair Cockburn (2005)
         * allow an application to be drive by users, programs, or automated test and to be developed in isolation from its eventual runtime external dependencies (eg. datbases and queues)
