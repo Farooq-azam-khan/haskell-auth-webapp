@@ -1,10 +1,10 @@
-name:                hauth
-version:             0.1.0.0
-github:              "farooq-azam-khan/haskell-auth-webapp"
-license:             BSD3
-author:              "Farooq Azam Khan"
-maintainer:          "khanazamfarooq99@gmal.com"
-copyright:           "2023 Author name here"
+name: hauth
+version: 0.1.0.0
+github:  "farooq-azam-khan/haskell-auth-webapp"
+license: BSD3
+author:  "Farooq Azam Khan"
+maintainer: "khanazamfarooq99@gmal.com"
+copyright:  "2023 Author name here"
 
 extra-source-files:
 - README.md
@@ -21,6 +21,11 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- classy-prelude 
+
+default-extensions: 
+  - NoImplicitPrelude 
+  - OverloadedStrings 
 
 ghc-options:
 - -Wall

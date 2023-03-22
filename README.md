@@ -43,3 +43,13 @@ stack install hpack-convert
 ```
 * Finds the `cabal` file in the current directory and converts that to `package.yaml` 
 * The `package.yaml` file will build the `[app-name].cabal` file (cabal file added `.gitignore` file)
+
+# `ClassyPrelude`
+* The default prelude in haskell has some downsides. One example is the exposure of partial functions which is unpredictable. 
+    * e.g. it throws an error on specific inputs like `head []`. 
+* another downside is that it does not include necessary libraries like `text` and `containers` 
+* `ClassyPrelude` is built on top of `MonoTraversable` 
+* `String` is `[Char]` however not efficient for text processing 
+* `Text` is an array of unicode characters and more efficient than `String` becuase they are stored in a contiguous block of array 
+* `LText` is a lazy variant of `Text`. Very good for large text you want to process 
+* `ByteString` is an array of bytes and `LByteString` is an array of bytes 
