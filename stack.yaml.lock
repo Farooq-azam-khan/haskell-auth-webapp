@@ -3,45 +3,11 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages:
-- completed:
-    hackage: string-random-0.1.0.0@sha256:421a99e3330a23ae664a706be4712c5ca0ff188bbd5d95e8a4a1fbf143365b98,2238
-    pantry-tree:
-      size: 434
-      sha256: 4092aa6c08612cf9c07a1f1eea0ae3e42b28bac9e621bf491c781859a70bffcd
-  original:
-    hackage: string-random-0.1.0.0
-- completed:
-    hackage: hedis-0.10.0@sha256:214ad5646cc4fc3f157b69f87556960ce9084f0e297252af7f8ff4afb2537464,4854
-    pantry-tree:
-      size: 1133
-      sha256: c317e7ec86960f768254aef4f7191e78b976f28f6b93382f1976e989c8f01437
-  original:
-    hackage: hedis-0.10.0
-- completed:
-    hackage: digestive-functors-0.8.3.0@sha256:090895c10f8a20ed834b89bb8ac6aa9512367b614a06316bf6dcd2f0ab6c165a,3041
-    pantry-tree:
-      size: 1682
-      sha256: 2f1a567ce6b73f0c8b31f4ea297f2b102107c96e8167a6ed68e0702d1c469b4e
-  original:
-    hackage: digestive-functors-0.8.3.0
-- completed:
-    hackage: digestive-functors-aeson-1.1.22@sha256:81984a1917b3da11a39fae39241b867b4ca2b32b581585dec2d1d0de27ca7169,1584
-    pantry-tree:
-      size: 345
-      sha256: 1ac61ae71cd9a2cef542e94a9122b37efbcf95b639c0b1da74b5d911e685bbac
-  original:
-    hackage: digestive-functors-aeson-1.1.22
-- completed:
-    hackage: katip-0.8.4.0@sha256:f835f757ed6f920c53080a573c498292d66c651e5bcd3d9c289664107d740e4a,4170
-    pantry-tree:
-      size: 1140
-      sha256: dcf198ecce42854fa57917b2431500f48c94e3d8bf32691956d2a71515e800de
-  original:
-    hackage: katip-0.8.4.0
+packages: []
 snapshots:
 - completed:
-    size: 567342
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/10/3.yaml
-    sha256: b3d22b89ec630597ad007088e98aa1c8d04844b6c0f23970b513a2862e0b8f0a
-  original: lts-10.3
+    sha256: 5d1df60a0aaf19ab42eb79d5ca01ab812318a96be3925559e902e1bfd8cac569
+    size: 649582
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/15.yaml
+  original:
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/15.yaml

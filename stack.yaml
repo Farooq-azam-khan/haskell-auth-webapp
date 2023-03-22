@@ -17,9 +17,9 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-#resolver:
-#  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/8.yaml
-resolver: lts-10.3
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/15.yaml
+
 # User packages to be built.
 # Various formats can be used as shown in the example below.
 #
@@ -35,34 +35,31 @@ packages:
 # These entries can reference officially published versions as well as
 # forks / in-progress versions pinned to a git hash. For example:
 #
-extra-deps:
-- string-random-0.1.0.0
-- hedis-0.10.0
-- digestive-functors-0.8.3.0
-- digestive-functors-aeson-1.1.22
-- katip-0.8.4.0
+# extra-deps:
+# - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
- 
+# extra-deps: []
+
 # Override default flag values for local packages and extra-deps
-flags: {}
+# flags: {}
 
 # Extra package databases containing global packages
-extra-package-dbs: []
+# extra-package-dbs: []
 
 # Control whether we use the GHC we find on the path
 # system-ghc: true
 #
-# Require a specific version of stack, using version ranges
+# Require a specific version of Stack, using version ranges
 # require-stack-version: -any # Default
-# require-stack-version: ">=2.7"
+# require-stack-version: ">=2.9"
 #
-# Override the architecture used by stack, especially useful on Windows
+# Override the architecture used by Stack, especially useful on Windows
 # arch: i386
 # arch: x86_64
 #
-# Extra directories used by stack for building
+# Extra directories used by Stack for building
 # extra-include-dirs: [/path/to/dir]
 # extra-lib-dirs: [/path/to/dir]
 #

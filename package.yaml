@@ -4,15 +4,15 @@ github:              "githubuser/hauth"
 license:             BSD3
 author:              "Author name here"
 maintainer:          "example@example.com"
-copyright:           "2022 Author name here"
+copyright:           "2023 Author name here"
 
 extra-source-files:
 - README.md
-- ChangeLog.md
+- CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
-category:            Web
+# category:            Web
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
@@ -20,43 +20,18 @@ category:            Web
 description:         Please see the README on GitHub at <https://github.com/githubuser/hauth#readme>
 
 dependencies:
-- base #>= 4.7 && < 5
-- classy-prelude 
-- pcre-heavy 
-- time-lens
-- time 
-- aeson 
-- mtl # for ExceptT 
-- string-random
-- data-has 
-- katip 
-- postgresql-simple 
-- postgresql-simple-migration
-- resource-pool 
-- hedis # redis  
-- amqp # rabbit mq
-- http-types
-- scotty 
-- cookie
-- wai 
-- wai-extra
-- blaze-builder
-- digestive-functors
-- digestive-functors-aeson 
-- lens
-  #- template-haskell 
-- exceptions   
-- unliftio-core
-- unliftio
+- base >= 4.7 && < 5
 
-default-extensions: 
-- NoImplicitPrelude
-- OverloadedStrings
-- QuasiQuotes
-- GeneralizedNewtypeDeriving
-- ConstraintKinds
-- FlexibleContexts
-- TemplateHaskell 
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
 
 library:
   source-dirs: src
