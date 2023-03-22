@@ -1,9 +1,9 @@
 name:                hauth
 version:             0.1.0.0
-github:              "githubuser/hauth"
+github:              "farooq-azam-khan/haskell-auth-webapp"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
+author:              "Farooq Azam Khan"
+maintainer:          "khanazamfarooq99@gmal.com"
 copyright:           "2023 Author name here"
 
 extra-source-files:
