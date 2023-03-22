@@ -20,13 +20,17 @@ extra-source-files:
 description: Please see the README on GitHub at <https://github.com/githubuser/hauth#readme>
 
 dependencies:
-- base >= 4.7 && < 5
-- classy-prelude 
-- time 
+  - base >= 4.7 && < 5
+  - classy-prelude 
+  - time 
+  - pcre-heavy 
+  - aeson 
+  - template-haskell 
 
 default-extensions: 
   - NoImplicitPrelude 
   - OverloadedStrings 
+  - QuasiQuotes 
 
 ghc-options:
 - -Wall
