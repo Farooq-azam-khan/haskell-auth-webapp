@@ -54,4 +54,4 @@ stack install hpack-convert
 * `LText` is a lazy variant of `Text`. Very good for large text you want to process 
 * `ByteString` is an array of bytes and `LByteString` is an array of bytes 
 * in `package.yaml` the `deault-extensions` list has `OverloadedStrings` option added in so that the default `String` is not used, but rather `Text` is used. 
-    * more precisely: `OverloadedStrings` allows you to build any type that is an instance of `IsString` `typeclass` 
+    * more precisely: `OverloadedStrings` allows you to build any type that is an instance of `IsString` `typeclass`  and depending on the context it will use the approiate string type
